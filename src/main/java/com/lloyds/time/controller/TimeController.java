@@ -2,7 +2,7 @@ package com.lloyds.time.controller;
 
 import com.lloyds.time.exception.HumanReadTimeException;
 import com.lloyds.time.service.ITimeService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class TimeController {
     private ITimeService timeService;
 
     @GetMapping("time/")
-    @ApiOperation("Time as human readable format. Takes hh:mm or nothing to get current time!")
+    @Operation(summary = "Time as human readable format. Takes hh:mm or nothing to get current time!")
     public ResponseEntity<String> fetchReadableTime(@RequestParam(required = false) String time) {
         return new ResponseEntity<>(timeService.getTime(time), HttpStatus.OK);
     }
