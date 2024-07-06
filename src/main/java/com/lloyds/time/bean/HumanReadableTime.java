@@ -10,13 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class HumanReadableTime implements IHumanReadableTime {
-    // Print Time in words.
+    // Generate Time in words.
     private String processTime(int hour, int minute) {
-        String clock[] = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
-                "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty",
-                "Twenty one", "Twenty two", "Twenty three", "Twenty four", "Twenty five", "Twenty six", "Twenty seven",
-                "Twenty eight", "Twenty nine" };
-
         String humanReadTime = "";
         hour = hour > 12 ? hour - 12 : hour;
         if (minute == 0)
@@ -52,7 +47,6 @@ public class HumanReadableTime implements IHumanReadableTime {
 
     @Override
     public String getTime(int hour, int minute) {
-
         if (hour < 0 || hour > 24) throw new HumanReadTimeException("Invalid hour");
         if (minute < 0 || minute > 60) throw new HumanReadTimeException("Invalid minutes");
         return processTime(hour, minute);
